@@ -19,31 +19,52 @@ public class Parameters {
 	private final String flota = "Flota";
 	private final String galaxia = "Galaxia";
 	
-	private final String minaMetal = "Mina de metal";
-	private final String minaCristal = "Mina de cristal";
-	private final String minaDeuterio = "Sintetizador de deuterio";
-	private final String minaSolar = "Planta de energía solar";
-	private final String almacenMetal = "Almacén de metal";
-	private final String almacenCristal = "Almacén de cristal";
-	private final String almacenDeuterio = "Contenedor de deuterio";
-	private static List<String> elementos;
+	private final String idRobot = "details14";
+	private final String idHangar = "details21";
+	private final String idInvestigacion = "details31";
+	private final String idAlianza = "details34";
+	private final String idSilo = "details44";
+	private final String idNanobots = "details15";
+	private final String idTerraformer = "details33";
+	private static List<String> InstlIdElements;
 	
-	public List<String> getElementos(){
-		return elementos;
+	public static List<String> getInstlIdElements() {
+		return InstlIdElements;
+	}
+	public void setInstlIdElements() {
+		List<String> aux = new ArrayList<String>();
+		aux.add(getIdRobot()); // 0
+		aux.add(getIdHangar()); // 1
+		aux.add(getIdInvestigacion()); // 2
+		aux.add(getIdAlianza()); // 3
+		aux.add(getIdSilo()); // 4
+		aux.add(getIdNanobots()); // 5
+		aux.add(getIdTerraformer()); //6
+		Parameters.InstlIdElements = aux;
+	}
+	public String getIdRobot() {
+		return idRobot;
+	}
+	public String getIdHangar() {
+		return idHangar;
+	}
+	public String getIdInvestigacion() {
+		return idInvestigacion;
+	}
+	public String getIdAlianza() {
+		return idAlianza;
+	}
+	public String getIdSilo() {
+		return idSilo;
+	}
+	public String getIdNanobots() {
+		return idNanobots;
+	}
+	public String getIdTerraformer() {
+		return idTerraformer;
 	}
 	
-	public void setElementos(){
-		List<String> objects = new ArrayList<String>();
-		objects.add(getMinaMetal()); //0
-		objects.add(getMinaCristal()); //1
-		objects.add(getMinaDeuterio()); //2
-		objects.add(getMinaSolar()); //3
-		objects.add(getAlmacenMetal()); //4
-		objects.add(getAlmacenCristal()); //5
-		objects.add(getAlmacenDeuterio()); //6
-		Parameters.elementos = objects;
-	}
-	
+
 	public String getUrl() {
 		return url;
 	}
@@ -81,26 +102,5 @@ public class Parameters {
 	public String getGalaxia() {
 		return galaxia;
 	}
-	public String getMinaMetal() {
-		return minaMetal;
-	}
-	public String getMinaCristal() {
-		return minaCristal;
-	}
-	public String getMinaDeuterio() {
-		return minaDeuterio;
-	}
-	public String getMinaSolar() {
-		return minaSolar;
-	}
-	public String getAlmacenMetal() {
-		return almacenMetal;
-	}
-	public String getAlmacenCristal() {
-		return almacenCristal;
-	}
-	public String getAlmacenDeuterio() {
-		return almacenDeuterio;
-	}
-
+	
 }

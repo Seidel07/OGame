@@ -8,14 +8,14 @@ import org.openqa.selenium.WebElement;
 
 public class AllPages {
 	
-	private Integer metal;
-	private Integer cristal;
-	private Integer deuterio;
-	private Integer energia;
+	private static Integer metal;
+	private static Integer cristal;
+	private static Integer deuterio;
+	private static Integer energia;
 	
 	
 	public Integer getMetal() {
-		return this.metal;
+		return AllPages.metal;
 	}
 	public Integer getCristal() {
 		return cristal;
@@ -30,22 +30,22 @@ public class AllPages {
 		
 	public void setMetal(WebDriver driver) {
 		String metalText = driver.findElement(By.id("resources_metal")).getText().replace(".","");
-		this.metal = Integer.parseInt(metalText);
+		AllPages.metal = Integer.parseInt(metalText);
 	}
 	
 	public void setCristal(WebDriver driver) {
 		String cristalText = driver.findElement(By.id("resources_crystal")).getText().replace(".","");
-		this.cristal = Integer.parseInt(cristalText);
+		AllPages.cristal = Integer.parseInt(cristalText);
 	}
 	
 	public void setDeuterio(WebDriver driver) {
 		String deuterioText = driver.findElement(By.id("resources_deuterium")).getText().replace(".","");
-		this.deuterio = Integer.parseInt(deuterioText);
+		AllPages.deuterio = Integer.parseInt(deuterioText);
 	}
 	
 	public void setEnergia(WebDriver driver) {
 		String energyText = driver.findElement(By.id("resources_energy")).getText().replace(".","");
-		this.energia = Integer.parseInt(energyText);
+		AllPages.energia = Integer.parseInt(energyText);
 	}
 	
 	public void setResources(WebDriver driver) {
