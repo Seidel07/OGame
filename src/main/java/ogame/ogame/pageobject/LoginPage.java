@@ -12,7 +12,7 @@ public class LoginPage {
 		WebElement universos = driver.findElement(By.id("serverLogin"));
 		Select seleccionador = new Select(universos);
 //		seleccionador.selectByValue(universo);
-		seleccionador.selectByIndex(7);
+		seleccionador.selectByIndex(8);
 		universos.click();
 	}
 	

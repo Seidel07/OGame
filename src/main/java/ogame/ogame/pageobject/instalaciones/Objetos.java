@@ -8,13 +8,35 @@ public class Objetos {
 	private  Integer metalRequerido = 0;
 	private  Integer cristalRequerido = 0;
 	private  Integer deuterioRequerido = 0;
+	private Integer energiaRequerida = 0;
 	private  Integer tiempoInicialRequerido = 0;
 	private  Double tiempoRequerido = 0.0;
 	private  Double constante = 2.0;
 	private  Integer nivel = 0;
 	private  WebElement webElement;
 	private  Integer index;
+	private boolean conviene;
+	private boolean puedo;
 	
+	public Integer getEnergiaRequerida() {
+		return energiaRequerida;
+	}
+	public void setEnergiaRequerida(Integer energiaRequerida) {
+		this.energiaRequerida = energiaRequerida;
+	}
+	public boolean isPuedo() {
+		return puedo;
+	}
+	public void setPuedo(boolean puedo) {
+		this.puedo = puedo;
+	}
+	
+	public boolean isConviene() {
+		return conviene;
+	}
+	public void setConviene(boolean conviene) {
+		this.conviene = conviene;
+	}
 	public Integer getIndex() {
 		return index;
 	}

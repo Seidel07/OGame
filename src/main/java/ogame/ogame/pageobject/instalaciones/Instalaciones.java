@@ -83,14 +83,15 @@ public class Instalaciones extends AllPages{
 //	}
 	
 	public void setIndexes() {
-		Objetos obj = new Objetos();
 		setObjetosList();
 		HashMap<String, Objetos> map = new HashMap<String, Objetos>();
-		for (int i=0; i< 1/*Parameters.getInstlIdElements().size()*/; i++) {
+		for (int i=0; i< Parameters.getInstlIdElements().size(); i++) {
+			Objetos obj = new Objetos();
 			String nombre = getObjetosList().get(i);
 			obj.setIndex(i);
 			map.put(nombre, obj);
 		}
+		
 		Instalaciones.objetosMap = map; 
 	}
 	
@@ -103,20 +104,6 @@ public class Instalaciones extends AllPages{
 		return driver.findElement(By.id("content"));
 	}
 	
-//	public void setRobotObjeto(WebDriver driver) {
-//		Objetos robots = getObjetosMap().get(getRobots());
-//		WebElement robotsElement = robots.getWebElement();
-//		robotsElement.click();
-//		WebElement content = findContent(driver);
-//		robots.setNombre(getRobots());
-//		robots.setMetalRequerido(Integer.parseInt(content.findElement(By.className("metal")).findElement(By.className("cost")).getText()));
-//		robots.setCristalRequerido(Integer.parseInt(content.findElement(By.className("crystal")).findElement(By.className("cost")).getText()));
-//		robots.setDeuterioRequerido(Integer.parseInt(content.findElement(By.className("deuterio")).findElement(By.className("cost")).getText()));
-//		robots.setTiempoInicialRequerido(53);
-//		robots.setNivel(Integer.parseInt(content.findElement(By.className("level")).getText().replace("Nivel ","")));
-//		robots.setTiempoRequerido(setTiempoRequerido(getRobots()));
-//	}
-	
 	public Double setTiempoRequerido(String nombre) {
 		Integer tir = getObjetosMap().get(nombre).getTiempoInicialRequerido();
 		Integer nivel = getObjetosMap().get(nombre).getNivel();
@@ -124,48 +111,6 @@ public class Instalaciones extends AllPages{
 		Double constante = getObjetosMap().get(nombre).getConstante();
 		return tir*Math.pow(constante, nivel)/(nivelRobots+1);
 	}
-	
-//	public void setHangarObjeto(WebDriver driver) {
-//		Objetos hangar = getObjetosMap().get(getHangar());
-//		WebElement hangarElement = hangar.getWebElement();
-//		hangarElement.click();
-//		WebElement content = findContent(driver);
-//		hangar.setNombre(getHangar());
-//		hangar.setMetalRequerido(Integer.parseInt(content.findElement(By.className("metal")).findElement(By.className("cost")).getText().replace(".", "")));
-//		hangar.setCristalRequerido(Integer.parseInt(content.findElement(By.className("crystal")).findElement(By.className("cost")).getText().replace(".", "")));
-//		hangar.setDeuterioRequerido(Integer.parseInt(content.findElement(By.className("deuterio")).findElement(By.className("cost")).getText().replace(".", "")));
-//		hangar.setTiempoInicialRequerido(61);
-//		hangar.setNivel(Integer.parseInt(content.findElement(By.className("level")).getText().replace("Nivel ","")));
-//		hangar.setTiempoRequerido(setTiempoRequerido(getHangar()));
-//	}
-//	
-//	public void setInvestigacionObjeto(WebDriver driver) {
-//		Objetos investigacion = getObjetosMap().get(getInvestigacion());
-//		WebElement investigacionElement = investigacion.getWebElement();
-//		investigacionElement.click();
-//		WebElement content = findContent(driver);
-//		investigacion.setNombre(getHangar());
-//		investigacion.setMetalRequerido(Integer.parseInt(content.findElement(By.className("metal")).findElement(By.className("cost")).getText()));
-//		investigacion.setCristalRequerido(Integer.parseInt(content.findElement(By.className("crystal")).findElement(By.className("cost")).getText()));
-//		investigacion.setDeuterioRequerido(Integer.parseInt(content.findElement(By.className("deuterio")).findElement(By.className("cost")).getText()));
-//		investigacion.setTiempoInicialRequerido(61);
-//		investigacion.setNivel(Integer.parseInt(content.findElement(By.className("level")).getText().replace("Nivel ","")));
-//		investigacion.setTiempoRequerido(setTiempoRequerido(getInvestigacion()));
-//	}
-//	
-//	public void setAlianzaObjeto(WebDriver driver) {
-//		Objetos alianza = getObjetosMap().get(getAlianza());
-//		WebElement alianzaElement = alianza.getWebElement();
-//		alianzaElement.click();
-//		WebElement content = findContent(driver);
-//		alianza.setNombre(getHangar());
-//		alianza.setMetalRequerido(Integer.parseInt(content.findElement(By.className("metal")).findElement(By.className("cost")).getText()));
-//		alianza.setCristalRequerido(Integer.parseInt(content.findElement(By.className("crystal")).findElement(By.className("cost")).getText()));
-//		alianza.setDeuterioRequerido(Integer.parseInt(content.findElement(By.className("deuterio")).findElement(By.className("cost")).getText()));
-//		alianza.setTiempoInicialRequerido(6171);
-//		alianza.setNivel(Integer.parseInt(content.findElement(By.className("level")).getText().replace("Nivel ","")));
-//		alianza.setTiempoRequerido(setTiempoRequerido(getInvestigacion()));
-//	}
 	
 	public void setObjetoMCD(WebDriver driver, String nombre, Integer tiempoInicial) {
 		setWebElement(driver, nombre);
@@ -199,13 +144,13 @@ public class Instalaciones extends AllPages{
 	public void setObjetos (WebDriver driver) {
 		goTo(driver, params.getInstalaciones());
 		setIndexes();
-		setObjetoMCD(driver, getRobots(), 53);
-		setObjetoMCD(driver, getHangar(), 61);
-		setObjetoMCD(driver, getInvestigacion(), 61);
-		setObjetoMC(driver, getAlianza(), 6171);
-		setObjetoMCD(driver, getSilo(), 4114);
-		setObjetoMCD(driver, getNanobots(), 540000);
-		setObjetoMCD(driver, getTerraformer(), 5142);
+		setObjetoMCD(driver, getRobots(), 106);
+		setObjetoMCD(driver, getHangar(), 123);
+		setObjetoMCD(driver, getInvestigacion(), 123);
+		setObjetoMC(driver, getAlianza(), 12342);
+		setObjetoMCD(driver, getSilo(), 8228);
+		setObjetoMCD(driver, getNanobots(), 1098000);
+		setObjetoMCD(driver, getTerraformer(), 10285);
 	}
 	
 	public boolean puedoSubirlo (WebDriver driver, String cual) {
@@ -214,22 +159,26 @@ public class Instalaciones extends AllPages{
 		Integer metal = getMetal() - getObjetosMap().get(cual).getMetalRequerido();
 		Integer cristal = getCristal() - getObjetosMap().get(cual).getCristalRequerido();
 		Integer deuterio = getDeuterio() - getObjetosMap().get(cual).getDeuterioRequerido();
+		System.out.println(cual.toUpperCase());
 		if (metal >=0 && cristal>=0 && deuterio >=0) {
+			System.out.println("Se va a intentar subir " + cual);
 			return true;
 		} else {
-			System.out.println(cual);
-			System.out.println("Metal: " + metal);
-			System.out.println("Cristal: " + cristal);
-			System.out.println("Deuterio: " + deuterio);
+			System.out.println("No se puede subir " + cual);
 			return false;
 		}
 	}
 	
 	public void subir(WebDriver driver, String cual) throws InterruptedException {
 		goTo(driver, params.getInstalaciones());
+		setWebElement(driver, cual);
 		getObjetosMap().get(cual).getWebElement().click();
 		findContent(driver).findElement(By.className("build-it")).click();
 		Thread.sleep((long) (getObjetosMap().get(cual).getTiempoRequerido()*1000));
+	}
+	
+	public void setConveniencia() {
+		
 	}
 
 }

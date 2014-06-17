@@ -6,8 +6,8 @@ import java.util.List;
 public class Parameters {
 	
 	private final String url = "http://www.ogame.com.ar";
-	private final String universo = "Kassiopeia";
-	private final String userName = "seidel07";
+	private final String universo = "Leo";
+	private final String userName = "rikonee";
 	private final String password = "28971091dns";
 	
 	private final String visionGeneral = "Visión general";
