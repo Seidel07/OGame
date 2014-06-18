@@ -177,8 +177,31 @@ public class Instalaciones extends AllPages{
 		Thread.sleep((long) (getObjetosMap().get(cual).getTiempoRequerido()*1000));
 	}
 	
-	public void setConveniencia() {
-		
+	public boolean convieneRobots() {
+		if (getObjetosMap().get(getRobots()).getNivel() <= 10) {
+			return true;
+		} else {
+			System.out.println("No conviene subir " + getRobots());
+			return false;
+		}
+	}
+	
+	public boolean convieneHangar() {
+		if (getObjetosMap().get(getHangar()).getNivel() <= 12  && getObjetosMap().get(getRobots()).getNivel() >= 2) {
+			return true;
+		} else {
+			System.out.println("No conviene subir " + getHangar());
+			return false;
+		}
+	}
+	
+	public boolean convieneInvestigacion() {
+		if (getObjetosMap().get(getInvestigacion()).getNivel() <= 12) {
+			return true;
+		} else {
+			System.out.println("No conviene subir " + getInvestigacion());
+			return false;
+		}
 	}
 
 }

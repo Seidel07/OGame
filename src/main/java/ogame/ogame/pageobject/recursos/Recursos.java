@@ -37,6 +37,50 @@ public class Recursos extends AllPages{
 	private static Integer prodMetal;
 	private static Integer prodCristal;
 	private static Integer prodDeuterio;
+	private static Integer capacidadMetal;
+	private static Integer capacidadCristal;
+	private static Integer capacidadDeuterio;
+	
+	public static Integer getCapacidadMetal() {
+		return capacidadMetal;
+	}
+
+	public void setCapacidadMetal(WebDriver driver) {
+		setWebElement(driver, getAlmacenMetal());
+		getObjetosMap().get(getAlmacenMetal()).getWebElement().click();
+		WebElement description = findDescription(driver);
+		this.capacidadMetal = Integer.parseInt(description.findElement(By.id("maxresources")).getText().replace(".", ""));
+	}
+
+	public static Integer getCapacidadCristal() {
+		return capacidadCristal;
+	}
+
+	public void setCapacidadCristal(WebDriver driver) {
+		setWebElement(driver, getAlmacenCristal());
+		getObjetosMap().get(getAlmacenCristal()).getWebElement().click();
+		WebElement description = findDescription(driver);
+		this.capacidadCristal = Integer.parseInt(description.findElement(By.id("maxresources")).getText().replace(".", ""));
+	}
+
+	public static Integer getCapacidadDeuterio() {
+		return capacidadDeuterio;
+	}
+
+	public void setCapacidadDeuterio(WebDriver driver) {
+		setWebElement(driver, getAlmacenDeuterio());
+		getObjetosMap().get(getAlmacenDeuterio()).getWebElement().click();
+		WebElement description = findDescription(driver);
+		this.capacidadDeuterio = Integer.parseInt(description.findElement(By.id("maxresources")).getText().replace(".", ""));
+	}
+	
+	public void setCapacidades(WebDriver driver) {
+		goTo(driver, params.getRecursos());
+		setCapacidadMetal(driver);
+		setCapacidadCristal(driver);
+		setCapacidadDeuterio(driver);
+	}
+
 	
 	public static Integer getProdMetal() {
 		return prodMetal;
@@ -114,20 +158,6 @@ public class Recursos extends AllPages{
 		Recursos.objetosList = aux;
 	}
 	
-//	public void setWebElements(WebDriver driver) {
-//		goTo(driver, params.getRecursos());
-//		List<WebElement> elements = driver.findElements(By.id("details"));
-//		HashMap<String,Objetos> map = new HashMap<String,Objetos>();
-//		Objetos obj = new Objetos();
-//		int i = 0;
-//		for (WebElement element : elements) {
-//			obj.setWebElement(element);
-//			String nombre = getObjetosList().get(i);
-//			map.put(nombre, obj);
-//		}
-//		Recursos2.objetosMap = map;
-//	}
-	
 	public void setWebElement(WebDriver driver, String cual) {
 		Integer index = getObjetosMap().get(cual).getIndex();
 		getObjetosMap().get(cual).setWebElement(driver.findElements(By.id("details")).get(index));
@@ -135,6 +165,10 @@ public class Recursos extends AllPages{
 	
 	public WebElement findContent(WebDriver driver) {
 		return driver.findElement(By.id("content"));
+	}
+	
+	public WebElement findDescription(WebDriver driver) {
+		return driver.findElement(By.id("description"));
 	}
 	
 	public Double setTiempoRequerido(String nombre) {
@@ -159,7 +193,7 @@ public class Recursos extends AllPages{
 		Recursos.objetosMap = map; 
 	}
 	
-	public void setObjetoMCD(WebDriver driver, String nombre, Integer tiempoInicial) {
+	public void setObjetoMCD(WebDriver driver, String nombre, Integer tiempoInicial, Double constante) {
 		setWebElement(driver, nombre);
 		Objetos obj = getObjetosMap().get(nombre);
 		WebElement objElement = obj.getWebElement();
@@ -172,9 +206,10 @@ public class Recursos extends AllPages{
 		obj.setTiempoInicialRequerido(tiempoInicial);
 		obj.setNivel(Integer.parseInt(content.findElement(By.className("level")).getText().replace("Nivel ","")));
 		obj.setTiempoRequerido(setTiempoRequerido(nombre));
+		obj.setConstante(constante);
 	}
 	
-	public void setObjetoMC(WebDriver driver, String nombre, Integer tiempoInicial) {
+	public void setObjetoMC(WebDriver driver, String nombre, Integer tiempoInicial, Double constante) {
 		setWebElement(driver, nombre);
 		Objetos obj = getObjetosMap().get(nombre);
 		WebElement objElement = obj.getWebElement();
@@ -186,9 +221,10 @@ public class Recursos extends AllPages{
 		obj.setTiempoInicialRequerido(tiempoInicial);
 		obj.setNivel(Integer.parseInt(content.findElement(By.className("level")).getText().replace("Nivel ","")));
 		obj.setTiempoRequerido(setTiempoRequerido(nombre));
+		obj.setConstante(constante);
 	}
 	
-	public void setObjetoCD(WebDriver driver, String nombre, Integer tiempoInicial) {
+	public void setObjetoCD(WebDriver driver, String nombre, Integer tiempoInicial, Double constante) {
 		setWebElement(driver, nombre);
 		Objetos obj = getObjetosMap().get(nombre);
 		WebElement objElement = obj.getWebElement();
@@ -200,9 +236,10 @@ public class Recursos extends AllPages{
 		obj.setTiempoInicialRequerido(tiempoInicial);
 		obj.setNivel(Integer.parseInt(content.findElement(By.className("level")).getText().replace("Nivel ","").replace("Número: ","")));
 		obj.setTiempoRequerido(setTiempoRequerido(nombre));
+		obj.setConstante(constante);
 	}
 	
-	public void setObjetoM(WebDriver driver, String nombre, Integer tiempoInicial) {
+	public void setObjetoM(WebDriver driver, String nombre, Integer tiempoInicial, Double constante) {
 		setWebElement(driver, nombre);
 		Objetos obj = getObjetosMap().get(nombre);
 		WebElement objElement = obj.getWebElement();
@@ -213,24 +250,25 @@ public class Recursos extends AllPages{
 		obj.setTiempoInicialRequerido(tiempoInicial);
 		obj.setNivel(Integer.parseInt(content.findElement(By.className("level")).getText().replace("Nivel ","")));
 		obj.setTiempoRequerido(setTiempoRequerido(nombre));
+		obj.setConstante(constante);
 	}
 	
 	public void setObjetos(WebDriver driver) {
 		// Buscar los WebElements primero
 		goTo(driver, params.getRecursos());
 		setIndexes();
-		setObjetoMC(driver, getMinaMetal(), 15);
-		setObjetoMC(driver, getMinaCristal(), 14);
-		setObjetoMC(driver, getMinaDeuterio(), 61);
-		setObjetoMC(driver, getMinaSolar(), 21);
-		setObjetoMCD(driver, getFusion(), 259);
-		setObjetoCD(driver, getSatelite(), 0);
-		setObjetoM(driver, getAlmacenMetal(), 205);
-		setObjetoMC(driver, getAlmacenCristal(), 308);
-		setObjetoMC(driver, getAlmacenDeuterio(), 411);
-		setObjetoM(driver, getEsconditeMetal(), 454);
-		setObjetoMC(driver, getEsconditeCristal(), 816);
-		setObjetoMC(driver, getEsconditeDeuterio(), 1088);
+		setObjetoMC(driver, getMinaMetal(), 15, 1.5);
+		setObjetoMC(driver, getMinaCristal(), 14, 1.6);
+		setObjetoMC(driver, getMinaDeuterio(), 61, 1.5);
+		setObjetoMC(driver, getMinaSolar(), 21, 1.6);
+		setObjetoMCD(driver, getFusion(), 259, 2.0);
+		setObjetoCD(driver, getSatelite(), 0, 1.0);
+		setObjetoM(driver, getAlmacenMetal(), 205, 2.0);
+		setObjetoMC(driver, getAlmacenCristal(), 308, 2.0);
+		setObjetoMC(driver, getAlmacenDeuterio(), 411, 2.0);
+		setObjetoM(driver, getEsconditeMetal(), 454, 2.0);
+		setObjetoMC(driver, getEsconditeCristal(), 816, 2.0);
+		setObjetoMC(driver, getEsconditeDeuterio(), 1088, 2.0);
 		setProducciones(driver);
 	}
 	
@@ -241,6 +279,7 @@ public class Recursos extends AllPages{
 		Integer cristal = getCristal() - getObjetosMap().get(cual).getCristalRequerido();
 		Integer deuterio = getDeuterio() - getObjetosMap().get(cual).getDeuterioRequerido();
 		if (metal >=0 && cristal>=0 && deuterio >=0) {
+			System.out.println("Se intentara subir " + cual);
 			return true;
 		} else {
 			System.out.println(cual.toUpperCase());
@@ -256,7 +295,9 @@ public class Recursos extends AllPages{
 		setWebElement(driver, cual);
 		getObjetosMap().get(cual).getWebElement().click();
 		findContent(driver).findElement(By.className("build-it")).click();
+		System.out.println("Sleep por: " + getObjetosMap().get(cual).getTiempoRequerido() + " segundos");
 		Thread.sleep((long) (getObjetosMap().get(cual).getTiempoRequerido()*1000));
+		System.out.println("Sleep finalizado. Se seguira con el programa");
 	}
 	
 	public void setProducciones(WebDriver driver) {
@@ -321,6 +362,46 @@ public class Recursos extends AllPages{
 			System.out.println("No conviene subir " + getMinaSolar());
 			return false;
 		}
+	}
+	
+	public boolean convieneAlmacenMetal() {
+		Integer metal0 = getObjetosMap().get(getMinaMetal()).getMetalRequerido();
+		Integer metal1 = getObjetosMap().get(getMinaCristal()).getMetalRequerido();
+		Integer metal2 = getObjetosMap().get(getMinaSolar()).getMetalRequerido();
+		if (metal0>this.capacidadMetal || metal1 > this.capacidadMetal || metal2 > this.capacidadMetal) {
+			System.out.println("Es conveniente subir el " + getAlmacenMetal());
+			return true;
+		} else {
+			System.out.println("No es conveniente subir el " + getAlmacenMetal());
+			return false;
+		}
+				
+	}
+	
+	public boolean convieneAlmacenCristal() {
+		Integer cristal0 = getObjetosMap().get(getMinaMetal()).getCristalRequerido();
+		Integer cristal1 = getObjetosMap().get(getMinaCristal()).getCristalRequerido();
+		Integer cristal2 = getObjetosMap().get(getMinaSolar()).getCristalRequerido();
+		if (cristal0>this.capacidadCristal || cristal1 > this.capacidadCristal || cristal2 > this.capacidadCristal) {
+			System.out.println("Es conveniente subir el " + getAlmacenCristal());
+			return true;
+		} else {
+			System.out.println("No es conveniente subir el " + getAlmacenCristal());
+			return false;
+		}
+				
+	}
+	
+	public boolean convieneAlmacenDeuterio() {
+		Integer deuterio = Instalaciones.getObjetosMap().get(instl.getRobots()).getDeuterioRequerido();
+		if (deuterio > this.capacidadDeuterio) {
+			System.out.println("Es conveniente subir el " + getAlmacenDeuterio());
+			return true;
+		} else {
+			System.out.println("No es conveniente subir el " + getAlmacenDeuterio());
+			return false;
+		}
+				
 	}
 
 }

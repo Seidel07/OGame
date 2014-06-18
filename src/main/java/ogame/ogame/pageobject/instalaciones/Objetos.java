@@ -77,7 +77,7 @@ public class Objetos {
 		return tiempoRequerido;
 	}
 	public  void setTiempoRequerido(Double tiempoRequerido) {
-		this.tiempoRequerido = tiempoRequerido;
+		this.tiempoRequerido = tiempoRequerido/5;
 	}
 	public  Integer getNivel() {
 		return nivel;
