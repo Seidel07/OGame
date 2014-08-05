@@ -1,5 +1,6 @@
 package ogame.ogame.pageobject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -12,6 +13,8 @@ public class AllPages {
 	private static Integer cristal;
 	private static Integer deuterio;
 	private static Integer energia;
+	private final String coordenadasPlaneta0 = "[1:147:6]";
+	private static List<String> coordenadasPlanetas;
 	
 	
 	public Integer getMetal() {
@@ -70,6 +73,19 @@ public class AllPages {
 				break;
 			} 
 		}
+	}
+	
+	public String getCoordenadasPlaneta0() {
+		return coordenadasPlaneta0;
+	}
+	
+	public static List<String> getCoordenadasPlanetas() {
+		return coordenadasPlanetas;
+	}
+	public void setCoordenadasPlanetas() {
+		List<String> aux = new ArrayList<String>();
+		aux.add(getCoordenadasPlaneta0());
+		AllPages.coordenadasPlanetas = aux;
 	}
 
 }

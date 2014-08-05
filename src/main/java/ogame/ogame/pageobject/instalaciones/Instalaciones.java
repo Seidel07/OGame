@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import ogame.ogame.pageobject.AllPages;
+import ogame.ogame.pageobject.Objetos;
 import ogame.ogame.pageobject.VisionGeneral;
 import ogame.ogame.parameters.Parameters;
 
@@ -142,7 +143,6 @@ public class Instalaciones extends AllPages{
 	}
 	
 	public void setObjetos (WebDriver driver) {
-		goTo(driver, params.getInstalaciones());
 		setIndexes();
 		setObjetoMCD(driver, getRobots(), 106);
 		setObjetoMCD(driver, getHangar(), 123);
@@ -154,7 +154,7 @@ public class Instalaciones extends AllPages{
 	}
 	
 	public boolean puedoSubirlo (WebDriver driver, String cual) {
-		setObjetos(driver);
+//		setObjetos(driver);
 		pageVG.setResources(driver);
 		Integer metal = getMetal() - getObjetosMap().get(cual).getMetalRequerido();
 		Integer cristal = getCristal() - getObjetosMap().get(cual).getCristalRequerido();
@@ -174,7 +174,7 @@ public class Instalaciones extends AllPages{
 		setWebElement(driver, cual);
 		getObjetosMap().get(cual).getWebElement().click();
 		findContent(driver).findElement(By.className("build-it")).click();
-		Thread.sleep((long) (getObjetosMap().get(cual).getTiempoRequerido()*1000));
+//		Thread.sleep((long) (getObjetosMap().get(cual).getTiempoRequerido()*1000));
 	}
 	
 	public boolean convieneRobots() {
@@ -203,5 +203,16 @@ public class Instalaciones extends AllPages{
 			return false;
 		}
 	}
+	
+//	public boolean sePuedeConstruir(WebDriver driver) {
+//		goTo(driver, params.getInstalaciones());
+//		driver.findElement(By.id("details14")).click();
+//		WebElement buildIt = driver.findElement(By.className("build-it_wrap"));
+//		if (buildIt.getText() == "Mejorar" || buildIt.getText() == "Comprar Materia Oscura") {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
 
 }

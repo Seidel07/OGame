@@ -9,9 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import ogame.ogame.pageobject.AllPages;
+import ogame.ogame.pageobject.Objetos;
 import ogame.ogame.pageobject.VisionGeneral;
 import ogame.ogame.pageobject.instalaciones.Instalaciones;
-import ogame.ogame.pageobject.instalaciones.Objetos;
 import ogame.ogame.pageobject.recursos.Recursos;
 import ogame.ogame.parameters.Parameters;
 
@@ -125,6 +125,7 @@ public class Hangar extends AllPages{
 	}
 	
 	public void setIndexes() {
+		// Solo es necesario realizarlo una vez
 		setObjetosList();
 		HashMap<String, Objetos> map = new HashMap<String, Objetos>();
 		for (int i=0; i< Recursos.getObjetosList().size(); i++) {
@@ -243,25 +244,7 @@ public class Hangar extends AllPages{
 		System.out.println("Sleep finalizado. Se seguira con el programa");
 	}
 	
-	public boolean convienePequena() {
-		Integer metal = pageVG.getMetal();
-		Integer cristal = pageVG.getCristal();
-		Integer deuterio = pageVG.getDeuterio();
-		Integer recursos = metal + cristal + deuterio;
-		if (recursos > getObjetosMap().get(getPequena()).getNivel() * 5000) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 	
-	public Integer cuantasPequeñas() {
-		Integer metal = pageVG.getMetal();
-		Integer cristal = pageVG.getCristal();
-		Integer deuterio = pageVG.getDeuterio();
-		Integer recursos = metal + cristal + deuterio;
-		return (int) Math.ceil((recursos/5000 - getObjetosMap().get(getPequena()).getNivel()));
-	}
 	
 	
 

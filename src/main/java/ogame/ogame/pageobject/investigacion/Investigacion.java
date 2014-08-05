@@ -9,9 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import ogame.ogame.pageobject.AllPages;
+import ogame.ogame.pageobject.Objetos;
 import ogame.ogame.pageobject.VisionGeneral;
 import ogame.ogame.pageobject.instalaciones.Instalaciones;
-import ogame.ogame.pageobject.instalaciones.Objetos;
 import ogame.ogame.parameters.Parameters;
 
 public class Investigacion extends AllPages{
@@ -19,6 +19,7 @@ public class Investigacion extends AllPages{
 	Instalaciones instl = new Instalaciones();
 	Parameters params = new Parameters();
 	VisionGeneral pageVG = new VisionGeneral();
+	InvElementsID investigacionId = new InvElementsID();
 	
 	private final String tEnergia = "Tecnología de energía";
 	private final String laser = "Tecnología láser";
@@ -124,14 +125,13 @@ public class Investigacion extends AllPages{
 	public void setIndexes() {
 		setObjetosList();
 		HashMap<String, Objetos> map = new HashMap<String, Objetos>();
-		for (int i=0; i< Parameters.getInstlIdElements().size(); i++) {
+		for (int i=0; i< getObjetosList().size(); i++) {
 			Objetos obj = new Objetos();
 			String nombre = getObjetosList().get(i);
 			obj.setIndex(i);
 			map.put(nombre, obj);
 		}
-		
-		Investigacion.objetosMap = map; 
+		setObjetosMap(map);
 	}
 	
 	public void setWebElement(WebDriver driver, String cual) {
@@ -222,7 +222,6 @@ public class Investigacion extends AllPages{
 	}
 	
 	public void setObjetos (WebDriver driver) {
-		goTo(driver, params.getInstalaciones());
 		setIndexes();
 		setObjetoCD(driver, getTEnergia(), 24*60);
 		setObjetoMC(driver, getLaser(), 9*60);
@@ -243,6 +242,7 @@ public class Investigacion extends AllPages{
 	}
 	
 	public boolean puedoSubirlo (WebDriver driver, String cual) {
+		goTo(driver, params.getInvestigacion());
 		setObjetos(driver);
 		pageVG.setResources(driver);
 		Integer metal = getMetal() - getObjetosMap().get(cual).getMetalRequerido();
@@ -263,7 +263,18 @@ public class Investigacion extends AllPages{
 		setWebElement(driver, cual);
 		getObjetosMap().get(cual).getWebElement().click();
 		findContent(driver).findElement(By.className("build-it")).click();
-		Thread.sleep((long) (getObjetosMap().get(cual).getTiempoRequerido()*1000));
+//		Thread.sleep((long) (getObjetosMap().get(cual).getTiempoRequerido()*1000));
 	}
+	
+//	public boolean sePuedeConstruir(WebDriver driver) {
+//		goTo(driver, params.getInvestigacion());
+//		driver.findElement(By.id("details113")).click();
+//		WebElement buildIt = driver.findElement(By.className("build-it_wrap"));
+//		if (buildIt.getText() == "Investigar") {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
 	
 }

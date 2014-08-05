@@ -9,9 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import ogame.ogame.pageobject.AllPages;
+import ogame.ogame.pageobject.Objetos;
 import ogame.ogame.pageobject.VisionGeneral;
 import ogame.ogame.pageobject.instalaciones.Instalaciones;
-import ogame.ogame.pageobject.instalaciones.Objetos;
 import ogame.ogame.parameters.Parameters;
 
 public class Recursos extends AllPages{
@@ -255,7 +255,6 @@ public class Recursos extends AllPages{
 	
 	public void setObjetos(WebDriver driver) {
 		// Buscar los WebElements primero
-		goTo(driver, params.getRecursos());
 		setIndexes();
 		setObjetoMC(driver, getMinaMetal(), 15, 1.5);
 		setObjetoMC(driver, getMinaCristal(), 14, 1.6);
@@ -295,9 +294,9 @@ public class Recursos extends AllPages{
 		setWebElement(driver, cual);
 		getObjetosMap().get(cual).getWebElement().click();
 		findContent(driver).findElement(By.className("build-it")).click();
-		System.out.println("Sleep por: " + getObjetosMap().get(cual).getTiempoRequerido() + " segundos");
-		Thread.sleep((long) (getObjetosMap().get(cual).getTiempoRequerido()*1000));
-		System.out.println("Sleep finalizado. Se seguira con el programa");
+//		System.out.println("Sleep por: " + getObjetosMap().get(cual).getTiempoRequerido() + " segundos");
+//		Thread.sleep((long) (getObjetosMap().get(cual).getTiempoRequerido()*1000));
+//		System.out.println("Sleep finalizado. Se seguira con el programa");
 	}
 	
 	public void setProducciones(WebDriver driver) {
@@ -343,7 +342,7 @@ public class Recursos extends AllPages{
 		Integer NivMet = getObjetosMap().get(getMinaMetal()).getNivel();
 		Integer NivCris = getObjetosMap().get(getMinaCristal()).getNivel();
 		Integer NivDeu = getObjetosMap().get(getMinaDeuterio()).getNivel();
-		if (NivDeu < (NivMet + NivCris)/10) {
+		if (NivDeu < (NivMet + NivCris)/10.0) {
 			System.out.println("Se intentara subir " + getMinaDeuterio());
 			return true;
 		} else {
@@ -401,7 +400,17 @@ public class Recursos extends AllPages{
 			System.out.println("No es conveniente subir el " + getAlmacenDeuterio());
 			return false;
 		}
-				
 	}
+	
+//	public boolean sePuedeConstruir(WebDriver driver) {
+//		goTo(driver, params.getRecursos());
+//		driver.findElement(By.id("details")).click();
+//		WebElement buildIt = driver.findElement(By.className("build-it_wrap"));
+//		if (buildIt.getText() == "Mejorar") {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
 
 }
