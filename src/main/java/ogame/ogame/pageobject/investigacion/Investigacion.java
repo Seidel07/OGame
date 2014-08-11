@@ -243,14 +243,14 @@ public class Investigacion extends AllPages{
 	
 	public boolean puedoSubirlo (WebDriver driver, String cual) {
 		goTo(driver, params.getInvestigacion());
-		setObjetos(driver);
+//		setObjetos(driver);
 		pageVG.setResources(driver);
 		Integer metal = getMetal() - getObjetosMap().get(cual).getMetalRequerido();
 		Integer cristal = getCristal() - getObjetosMap().get(cual).getCristalRequerido();
 		Integer deuterio = getDeuterio() - getObjetosMap().get(cual).getDeuterioRequerido();
 		System.out.println(cual.toUpperCase());
 		if (metal >=0 && cristal>=0 && deuterio >=0) {
-			System.out.println("Se va a intentar subir " + cual);
+			System.out.println("Es posible subir " + cual);
 			return true;
 		} else {
 			System.out.println("No se puede subir " + cual);
@@ -259,11 +259,10 @@ public class Investigacion extends AllPages{
 	}
 	
 	public void subir(WebDriver driver, String cual) throws InterruptedException {
-		goTo(driver, params.getInstalaciones());
+		goTo(driver, params.getInvestigacion());
 		setWebElement(driver, cual);
 		getObjetosMap().get(cual).getWebElement().click();
 		findContent(driver).findElement(By.className("build-it")).click();
-//		Thread.sleep((long) (getObjetosMap().get(cual).getTiempoRequerido()*1000));
 	}
 	
 //	public boolean sePuedeConstruir(WebDriver driver) {

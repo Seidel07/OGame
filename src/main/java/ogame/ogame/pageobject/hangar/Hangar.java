@@ -128,7 +128,7 @@ public class Hangar extends AllPages{
 		// Solo es necesario realizarlo una vez
 		setObjetosList();
 		HashMap<String, Objetos> map = new HashMap<String, Objetos>();
-		for (int i=0; i< Recursos.getObjetosList().size(); i++) {
+		for (int i=0; i< Hangar.getObjetosList().size(); i++) {
 			Objetos obj = new Objetos();
 			String nombre = getObjetosList().get(i);
 			obj.setIndex(i);
@@ -197,7 +197,7 @@ public class Hangar extends AllPages{
 	
 	public void setObjetos(WebDriver driver) {
 		// Buscar los WebElements primero
-		goTo(driver, params.getHangar());
+//		goTo(driver, params.getHangar());
 		setIndexes();
 		setObjetoMC(driver, getLigero(), 15);
 		setObjetoMC(driver, getPesado(), 14);

@@ -161,7 +161,7 @@ public class Instalaciones extends AllPages{
 		Integer deuterio = getDeuterio() - getObjetosMap().get(cual).getDeuterioRequerido();
 		System.out.println(cual.toUpperCase());
 		if (metal >=0 && cristal>=0 && deuterio >=0) {
-			System.out.println("Se va a intentar subir " + cual);
+			System.out.println("Se puede subir " + cual);
 			return true;
 		} else {
 			System.out.println("No se puede subir " + cual);
@@ -179,6 +179,7 @@ public class Instalaciones extends AllPages{
 	
 	public boolean convieneRobots() {
 		if (getObjetosMap().get(getRobots()).getNivel() <= 10) {
+			System.out.println("Es conveniente subir " + getRobots());
 			return true;
 		} else {
 			System.out.println("No conviene subir " + getRobots());
@@ -188,6 +189,7 @@ public class Instalaciones extends AllPages{
 	
 	public boolean convieneHangar() {
 		if (getObjetosMap().get(getHangar()).getNivel() <= 12  && getObjetosMap().get(getRobots()).getNivel() >= 2) {
+			System.out.println("Es conveniente subir " + getHangar());
 			return true;
 		} else {
 			System.out.println("No conviene subir " + getHangar());

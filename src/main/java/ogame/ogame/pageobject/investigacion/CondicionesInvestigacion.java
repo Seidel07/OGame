@@ -17,7 +17,7 @@ public class CondicionesInvestigacion extends Investigacion{
 	}
 	
 	public boolean puedoLaser() {
-		Integer energiaNivel = inv.getObjetosMap().get(getEnergia()).getNivel();
+		Integer energiaNivel = inv.getObjetosMap().get(getTEnergia()).getNivel();
 		if (energiaNivel >=2) {
 			return true;
 		} else {
@@ -27,7 +27,7 @@ public class CondicionesInvestigacion extends Investigacion{
 	
 	public boolean puedoIonica() {
 		Integer investigacionNivel = instl.getObjetosMap().get(instl.getInvestigacion()).getNivel();
-		Integer energiaNivel = getObjetosMap().get(getEnergia()).getNivel();
+		Integer energiaNivel = getObjetosMap().get(getTEnergia()).getNivel();
 		Integer laserNivel = getObjetosMap().get(getLaser()).getNivel();
 		if (investigacionNivel >= 4 && energiaNivel >=4 && laserNivel >= 5) {
 			return true;
@@ -38,7 +38,7 @@ public class CondicionesInvestigacion extends Investigacion{
 	
 	public boolean puedoHiperespacio() {
 		Integer investigacionNivel = instl.getObjetosMap().get(instl.getInvestigacion()).getNivel();
-		Integer energiaNivel = getObjetosMap().get(getEnergia()).getNivel();
+		Integer energiaNivel = getObjetosMap().get(getTEnergia()).getNivel();
 		Integer defensaNivel = getObjetosMap().get(getDefensa()).getNivel();
 		if (investigacionNivel >= 7 && energiaNivel >=5 && defensaNivel >= 5) {
 			return true;
@@ -48,7 +48,7 @@ public class CondicionesInvestigacion extends Investigacion{
 	}
 	
 	public boolean puedoPlasma() {
-		Integer energiaNivel = getObjetosMap().get(getEnergia()).getNivel();
+		Integer energiaNivel = getObjetosMap().get(getTEnergia()).getNivel();
 		Integer laserNivel = getObjetosMap().get(getLaser()).getNivel();
 		Integer ionicaNivel = getObjetosMap().get(getIonica()).getNivel();
 		if (energiaNivel >=8 && laserNivel >= 10 && ionicaNivel >= 5) {
@@ -59,7 +59,7 @@ public class CondicionesInvestigacion extends Investigacion{
 	}
 	
 	public boolean puedoCombustion() {
-		Integer energiaNivel = getObjetosMap().get(getEnergia()).getNivel();
+		Integer energiaNivel = getObjetosMap().get(getTEnergia()).getNivel();
 		if (energiaNivel >=1) {
 			return true;
 		} else {
@@ -69,7 +69,7 @@ public class CondicionesInvestigacion extends Investigacion{
 	
 	public boolean puedoImpulso() {
 		Integer investigacionNivel = instl.getObjetosMap().get(instl.getInvestigacion()).getNivel();
-		Integer energiaNivel = getObjetosMap().get(getEnergia()).getNivel();
+		Integer energiaNivel = getObjetosMap().get(getTEnergia()).getNivel();
 		if (investigacionNivel >= 2 && energiaNivel >=1) {
 			return true;
 		} else {
@@ -153,7 +153,7 @@ public class CondicionesInvestigacion extends Investigacion{
 	
 	public boolean puedoDefensa() {
 		Integer investigacionNivel = instl.getObjetosMap().get(instl.getInvestigacion()).getNivel();
-		Integer energiaNivel = getObjetosMap().get(getEnergia()).getNivel();
+		Integer energiaNivel = getObjetosMap().get(getTEnergia()).getNivel();
 		if (investigacionNivel >= 6 && energiaNivel >= 3) {
 			return true;
 		} else {

@@ -12,8 +12,10 @@ public class CondicionesNaves {
 		Integer hangarNivel = instl.getObjetosMap().get(instl.getHangar()).getNivel();
 		Integer combustionNivel = inv.getObjetosMap().get(inv.getCombustion()).getNivel();
 		if (hangarNivel >=2 && combustionNivel >= 2) {
+			System.out.println("Es posible construir naves pequeñas de carga");
 			return true;
 		} else {
+			System.out.println("No es posible construir naves pequeñas de carga");
 			return false;
 		}
 	}

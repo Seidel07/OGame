@@ -268,17 +268,17 @@ public class Recursos extends AllPages{
 		setObjetoM(driver, getEsconditeMetal(), 454, 2.0);
 		setObjetoMC(driver, getEsconditeCristal(), 816, 2.0);
 		setObjetoMC(driver, getEsconditeDeuterio(), 1088, 2.0);
-		setProducciones(driver);
+//		setProducciones(driver);
 	}
 	
 	public boolean puedoSubirlo (WebDriver driver, String cual) {
 		pageVG.setResources(driver);
-		setObjetos(driver);
+//		setObjetos(driver);
 		Integer metal = getMetal() - getObjetosMap().get(cual).getMetalRequerido();
 		Integer cristal = getCristal() - getObjetosMap().get(cual).getCristalRequerido();
 		Integer deuterio = getDeuterio() - getObjetosMap().get(cual).getDeuterioRequerido();
 		if (metal >=0 && cristal>=0 && deuterio >=0) {
-			System.out.println("Se intentara subir " + cual);
+			System.out.println("Se puede subir " + cual);
 			return true;
 		} else {
 			System.out.println(cual.toUpperCase());
@@ -317,7 +317,7 @@ public class Recursos extends AllPages{
 		Integer cristal = getObjetosMap().get(getMinaMetal()).getCristalRequerido() + getObjetosMap().get(getMinaCristal()).getCristalRequerido() + getObjetosMap().get(getMinaSolar()).getCristalRequerido();
 		Double mc = (double) ((metal - getMetal())/getProdMetal()); 
 		Double cc = (double) ((cristal - getCristal()) / getProdCristal());
-		if (mc > cc) {
+		if (mc > cc && getEnergia() >= 0) {
 			System.out.println("Se intentara subir " + getMinaMetal());
 			return true;
 		} else {
@@ -328,7 +328,7 @@ public class Recursos extends AllPages{
 	}
 	
 	public boolean convieneCristal() {
-		if (convieneMetal()) {
+		if (convieneMetal() || getEnergia() < 0) {
 			System.out.println(getMinaCristal().toUpperCase());
 			System.out.println("No conviene subir " + getMinaCristal());
 			return false;

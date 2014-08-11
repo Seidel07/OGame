@@ -3,7 +3,7 @@ package ogame.ogame.pageobject.investigacion;
 public class ConvenienciasInvestigacion extends Investigacion{
 	
 	public boolean convieneEnergia() {
-		Integer energiaNivel = getObjetosMap().get(getEnergia()).getNivel();
+		Integer energiaNivel = getObjetosMap().get(getTEnergia()).getNivel();
 		if (energiaNivel <8) {
 			return true;
 		} else {
@@ -12,7 +12,7 @@ public class ConvenienciasInvestigacion extends Investigacion{
 	}
 	
 	public boolean convieneLaser() {
-		Integer laserNivel = getObjetosMap().get(getLaser()).getNivel();;
+		Integer laserNivel = getObjetosMap().get(getLaser()).getNivel();
 		if (laserNivel < 12) {
 			return true;
 		} else {

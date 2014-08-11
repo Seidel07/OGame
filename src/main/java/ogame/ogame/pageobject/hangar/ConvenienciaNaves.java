@@ -13,11 +13,14 @@ public class ConvenienciaNaves extends Hangar{
 			Integer deuterio = pageVG.getDeuterio();
 			Integer recursos = metal + cristal + deuterio;
 			if (recursos > getObjetosMap().get(getPequena()).getNivel() * 5000) {
+				System.out.println("Es conveniente construir naves pequeñas de carga");
 				return true;
 			} else {
+				System.out.println("No es conveniente construir naves pequeñas de carga");
 				return false;
 			}
 		} else {
+			System.out.println("No es conveniente construir naves pequeñas de carga");
 			return false;
 		}
 	}
@@ -28,8 +31,10 @@ public class ConvenienciaNaves extends Hangar{
 		Integer deuterio = pageVG.getDeuterio();
 		Integer recursos = metal + cristal + deuterio;
 		if (recursos > getObjetosMap().get(getGrande()).getNivel() * 25000) {
+			System.out.println("Es conveniente construir naves grandes de carga");
 			return true;
 		} else {
+			System.out.println("No es conveniente construir naves grandes de carga");
 			return false;
 		}
 	}

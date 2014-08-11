@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import ogame.ogame.pageobject.hangar.Hangar;
 import ogame.ogame.pageobject.instalaciones.Instalaciones;
 import ogame.ogame.pageobject.investigacion.CondicionesInvestigacion;
 import ogame.ogame.pageobject.investigacion.ConvenienciasInvestigacion;
@@ -32,25 +33,31 @@ public class Metodos {
 	}
 	
 	private static Parameters params = new Parameters();
+	private static VisionGeneral pageVG = new VisionGeneral();
 	private static LoginPage loginPage = new LoginPage();
 	private static Recursos pageR = new Recursos();
 	private static Instalaciones pageIns = new Instalaciones();
 	private static Investigacion pageInv = new Investigacion();
+	private static Hangar pageH = new Hangar();
 	private static ConvenienciasInvestigacion pageConvInv= new ConvenienciasInvestigacion();
 	private static CondicionesInvestigacion pageCondInv = new CondicionesInvestigacion();
 	private static InvElementsID investigacionId = new InvElementsID();
 	private static AllPages allPages = new AllPages();
 	
 	public void manejoBrowser(WebDriver driver) {
+		System.out.println("Se procedera a entrar a la cuenta");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.get(params.getUrl());
 		loginPage.login(driver, params.getUniverso(), params.getUserName(), params.getPassword());
+		System.out.println("Se ha entrado a la cuenta");
 	}
 	
 	public void setTodo(WebDriver driver) {
+		System.out.println("Se procedera a setearle los valores a los elementos");
 		setIds();
 		setObjetos(driver);
 		pageR.setCapacidades(driver);
+		System.out.println("Todos los valores fueron seteados");
 	}
 	
 	public void setIds() {
@@ -59,8 +66,24 @@ public class Metodos {
 	}
 	
 	public void setObjetos(WebDriver driver) {
+		
+		while (!pageVG.sePuedeConstruirEdifcios(driver)) {
+			try {
+				Thread.sleep(1000*60);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 		setObjetosInstalaciones(driver);
 		setObjetosRecursos(driver);
+		setObjetosHangar(driver);
+		while (!pageVG.sePuedeInvestigar(driver)) {
+			try {
+				Thread.sleep(1000*60);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 		setObjetosInvestigacion(driver);
 	}
 	
@@ -77,6 +100,11 @@ public class Metodos {
 	public void setObjetosInvestigacion(WebDriver driver) {
 		allPages.goTo(driver, params.getInvestigacion());
 		pageInv.setObjetos(driver);
+	}
+	
+	public void setObjetosHangar(WebDriver driver) {
+		allPages.goTo(driver, params.getHangar());
+		pageH.setObjetos(driver);
 	}
 
 }
