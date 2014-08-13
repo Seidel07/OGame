@@ -1,4 +1,4 @@
-package ogame.ogame.pageobject.instalaciones;
+package Ogame.ogame.pageobject.instalaciones;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,10 +8,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import ogame.ogame.pageobject.AllPages;
-import ogame.ogame.pageobject.Objetos;
-import ogame.ogame.pageobject.VisionGeneral;
-import ogame.ogame.parameters.Parameters;
+import Ogame.ogame.pageobject.AllPages;
+import Ogame.ogame.pageobject.Objetos;
+import Ogame.ogame.pageobject.VisionGeneral;
+import Ogame.ogame.parameters.Parameters;
 
 public class Instalaciones extends AllPages{
 	

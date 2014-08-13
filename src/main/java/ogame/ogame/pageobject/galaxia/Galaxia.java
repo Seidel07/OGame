@@ -1,4 +1,4 @@
-package ogame.ogame.pageobject.galaxia;
+package Ogame.ogame.pageobject.galaxia;
 
 import java.util.ArrayList;
 import java.util.List;

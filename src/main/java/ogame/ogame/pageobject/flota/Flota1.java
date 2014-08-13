@@ -1,11 +1,11 @@
-package ogame.ogame.pageobject.flota;
+package Ogame.ogame.pageobject.flota;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import ogame.ogame.pageobject.AllPages;
-import ogame.ogame.pageobject.hangar.Hangar;
-import ogame.ogame.parameters.Parameters;
+import Ogame.ogame.pageobject.AllPages;
+import Ogame.ogame.pageobject.hangar.Hangar;
+import Ogame.ogame.parameters.Parameters;
 
 public class Flota1 extends AllPages{
 	

@@ -1,4 +1,4 @@
-package ogame.ogame.pageobject.instalaciones;
+package Ogame.ogame.pageobject.instalaciones;
 
 import org.openqa.selenium.WebElement;
 

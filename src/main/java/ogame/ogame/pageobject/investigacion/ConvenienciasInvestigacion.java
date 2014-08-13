@@ -1,4 +1,4 @@
-package ogame.ogame.pageobject.investigacion;
+package Ogame.ogame.pageobject.investigacion;
 
 public class ConvenienciasInvestigacion extends Investigacion{
 	

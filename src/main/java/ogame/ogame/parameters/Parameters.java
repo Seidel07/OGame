@@ -1,4 +1,4 @@
-package ogame.ogame.parameters;
+package Ogame.ogame.parameters;
 
 import java.util.ArrayList;
 import java.util.List;

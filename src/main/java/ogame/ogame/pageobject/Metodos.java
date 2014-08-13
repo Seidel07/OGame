@@ -1,17 +1,17 @@
-package ogame.ogame.pageobject;
+package Ogame.ogame.pageobject;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import ogame.ogame.pageobject.hangar.Hangar;
-import ogame.ogame.pageobject.instalaciones.Instalaciones;
-import ogame.ogame.pageobject.investigacion.CondicionesInvestigacion;
-import ogame.ogame.pageobject.investigacion.ConvenienciasInvestigacion;
-import ogame.ogame.pageobject.investigacion.InvElementsID;
-import ogame.ogame.pageobject.investigacion.Investigacion;
-import ogame.ogame.pageobject.recursos.Recursos;
-import ogame.ogame.parameters.Parameters;
+import Ogame.ogame.pageobject.hangar.Hangar;
+import Ogame.ogame.pageobject.instalaciones.Instalaciones;
+import Ogame.ogame.pageobject.investigacion.CondicionesInvestigacion;
+import Ogame.ogame.pageobject.investigacion.ConvenienciasInvestigacion;
+import Ogame.ogame.pageobject.investigacion.InvElementsID;
+import Ogame.ogame.pageobject.investigacion.Investigacion;
+import Ogame.ogame.pageobject.recursos.Recursos;
+import Ogame.ogame.parameters.Parameters;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -57,6 +57,7 @@ public class Metodos {
 		setIds();
 		setObjetos(driver);
 		pageR.setCapacidades(driver);
+		pageR.setProducciones(driver);
 		System.out.println("Todos los valores fueron seteados");
 	}
 	
@@ -69,7 +70,7 @@ public class Metodos {
 		
 		while (!pageVG.sePuedeConstruirEdifcios(driver)) {
 			try {
-				Thread.sleep(1000*60);
+				Thread.sleep(TimeUnit.MINUTES.toMillis(1));
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -79,7 +80,7 @@ public class Metodos {
 		setObjetosHangar(driver);
 		while (!pageVG.sePuedeInvestigar(driver)) {
 			try {
-				Thread.sleep(1000*60);
+				Thread.sleep(TimeUnit.MINUTES.toMillis(1));
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

@@ -1,4 +1,4 @@
-package ogame.ogame.pageobject.flota;
+package Ogame.ogame.pageobject.flota;
 
 import java.util.List;
 

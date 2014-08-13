@@ -1,6 +1,6 @@
-package ogame.ogame.pageobject;
+package Ogame.ogame.pageobject;
 
-import ogame.ogame.parameters.Parameters;
+import Ogame.ogame.parameters.Parameters;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

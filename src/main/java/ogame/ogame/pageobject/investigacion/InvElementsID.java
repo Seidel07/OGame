@@ -1,9 +1,9 @@
-package ogame.ogame.pageobject.investigacion;
+package Ogame.ogame.pageobject.investigacion;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ogame.ogame.parameters.Parameters;
+import Ogame.ogame.parameters.Parameters;
 
 public class InvElementsID {
 	

@@ -1,4 +1,4 @@
-package ogame.ogame.pageobject.hangar;
+package Ogame.ogame.pageobject.hangar;
 
 // This class has things TODO
 

@@ -1,7 +1,7 @@
-package ogame.ogame.pageobject.hangar;
+package Ogame.ogame.pageobject.hangar;
 
-import ogame.ogame.pageobject.instalaciones.Instalaciones;
-import ogame.ogame.pageobject.investigacion.Investigacion;
+import Ogame.ogame.pageobject.instalaciones.Instalaciones;
+import Ogame.ogame.pageobject.investigacion.Investigacion;
 
 public class CondicionesNaves {
 	

@@ -5,21 +5,21 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import ogame.ogame.pageobject.AllPages;
-import ogame.ogame.pageobject.LoginPage;
-import ogame.ogame.pageobject.Metodos;
-import ogame.ogame.pageobject.VisionGeneral;
-import ogame.ogame.pageobject.hangar.CantidadesAConstruir;
-import ogame.ogame.pageobject.hangar.CondicionesNaves;
-import ogame.ogame.pageobject.hangar.ConvenienciaNaves;
-import ogame.ogame.pageobject.hangar.Hangar;
-import ogame.ogame.pageobject.instalaciones.Instalaciones;
-import ogame.ogame.pageobject.investigacion.CondicionesInvestigacion;
-import ogame.ogame.pageobject.investigacion.ConvenienciasInvestigacion;
-import ogame.ogame.pageobject.investigacion.InvElementsID;
-import ogame.ogame.pageobject.investigacion.Investigacion;
-import ogame.ogame.pageobject.recursos.Recursos;
-import ogame.ogame.parameters.Parameters;
+import Ogame.ogame.pageobject.AllPages;
+import Ogame.ogame.pageobject.LoginPage;
+import Ogame.ogame.pageobject.Metodos;
+import Ogame.ogame.pageobject.VisionGeneral;
+import Ogame.ogame.pageobject.hangar.CantidadesAConstruir;
+import Ogame.ogame.pageobject.hangar.CondicionesNaves;
+import Ogame.ogame.pageobject.hangar.ConvenienciaNaves;
+import Ogame.ogame.pageobject.hangar.Hangar;
+import Ogame.ogame.pageobject.instalaciones.Instalaciones;
+import Ogame.ogame.pageobject.investigacion.CondicionesInvestigacion;
+import Ogame.ogame.pageobject.investigacion.ConvenienciasInvestigacion;
+import Ogame.ogame.pageobject.investigacion.InvElementsID;
+import Ogame.ogame.pageobject.investigacion.Investigacion;
+import Ogame.ogame.pageobject.recursos.Recursos;
+import Ogame.ogame.parameters.Parameters;
 
 
 public class App 
@@ -132,7 +132,7 @@ public class App
 
 
 					System.out.println("Se hara un sleep de 1 minuto");
-					Thread.sleep(1000*60);
+					Thread.sleep(TimeUnit.MINUTES.toMillis(1));
 					System.out.println("Sleep finalizado");
 				}
 

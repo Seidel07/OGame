@@ -1,6 +1,6 @@
-package ogame.ogame.pageobject.investigacion;
+package Ogame.ogame.pageobject.investigacion;
 
-import ogame.ogame.pageobject.instalaciones.Instalaciones;
+import Ogame.ogame.pageobject.instalaciones.Instalaciones;
 
 public class CondicionesInvestigacion extends Investigacion{
 
